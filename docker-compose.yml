@@ -33,13 +33,20 @@ services:
     restart: always
     hostname: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PW: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - pg-data:/var/lib/postgresql/data/pgdata
+
+  pgadmin:
+    image: fenglc/pgadmin4:1.0
+    restart: always
+    hostname: pgadmin4
+    ports:
+      - "80:5050"
 
 volumes:
   zookeeper-data:
