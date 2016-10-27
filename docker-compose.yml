@@ -22,7 +22,7 @@ services:
     ports:
       - "9092:9092"
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: w-stcs-services
+      KAFKA_ADVERTISED_HOST_NAME: 10.78.61.115
       USER_ID: ${USER_ID}
       USER_NAME: kafka
     volumes:
@@ -35,7 +35,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: stcsdb
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PW: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -48,8 +48,11 @@ services:
     hostname: pgadmin4
     ports:
       - "80:5050"
+    volumes:
+      - pgadmin-data:/pgadmin4
 
 volumes:
   zookeeper-data:
   kafka-data:
   pg-data:
+  pgadmin-data:
